@@ -20,4 +20,11 @@ public class Container implements Serializable {
     public List<Table> getList() {
         return list;
     }
+
+    @Override
+    public String toString() {
+        return "Container { \n" +
+                "list=" + list +
+                " \n}";
+    }
 }
