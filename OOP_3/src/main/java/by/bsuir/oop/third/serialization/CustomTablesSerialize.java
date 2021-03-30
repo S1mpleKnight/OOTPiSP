@@ -14,15 +14,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class CustomSerialize implements SerializeStrategy {
-    private static CustomSerialize customVersion;
+public class CustomTablesSerialize implements SerializeStrategy {
+    private static CustomTablesSerialize customVersion;
 
-    private CustomSerialize() {
+    private CustomTablesSerialize() {
     }
 
-    public static CustomSerialize getCustomVersion() {
+    public static CustomTablesSerialize getCustomVersion() {
         if (customVersion == null) {
-            customVersion = new CustomSerialize();
+            customVersion = new CustomTablesSerialize();
         }
         return customVersion;
     }

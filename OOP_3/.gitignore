@@ -2,6 +2,4 @@
 .gradle/
 build/
 lib/
-file.txt
-file.yaml
-file_2.txt
+files/

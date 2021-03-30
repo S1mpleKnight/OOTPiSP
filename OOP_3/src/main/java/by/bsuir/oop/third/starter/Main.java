@@ -2,9 +2,8 @@ package by.bsuir.oop.third.starter;
 
 import by.bsuir.oop.third.container.Container;
 import by.bsuir.oop.third.furniture.Table;
-import by.bsuir.oop.third.maker.Manufacturer;
 import by.bsuir.oop.third.serialization.BinarySerialize;
-import by.bsuir.oop.third.serialization.CustomSerialize;
+import by.bsuir.oop.third.serialization.CustomTablesSerialize;
 import by.bsuir.oop.third.serialization.SerializeStrategy;
 import by.bsuir.oop.third.serialization.YAMLSerialize;
 import javafx.application.Application;
@@ -18,9 +17,9 @@ import java.util.List;
 
 public class Main extends Application {
     private static final Container CONTAINER = new Container();
-    private static final File BINARY = new File("./file.txt");
-    private static final File YAML = new File("./file.yaml");
-    private static final File CUSTOM = new File("./file_2.txt");
+    private static final File BINARY = new File("./files/file.txt");
+    private static final File YAML = new File("./files/file.yaml");
+    private static final File CUSTOM = new File("./files/file_2.txt");
 
     private static final Label LABEL = new Label();
 
@@ -40,7 +39,7 @@ public class Main extends Application {
     }
 
     private static void custom() {
-        SerializeStrategy strategy = CustomSerialize.getCustomVersion();
+        SerializeStrategy strategy = CustomTablesSerialize.getCustomVersion();
         strategy.write(CUSTOM, CONTAINER);
         List<Table> list = strategy.read(CUSTOM).getList();
         StringBuilder text = new StringBuilder();
@@ -78,6 +77,7 @@ public class Main extends Application {
         group.getChildren().addAll( LABEL);
         Scene scene = new Scene(group);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }
