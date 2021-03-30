@@ -41,9 +41,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Label label = new Label("HELLO");
         Group group = new Group();
-        group.getChildren().addAll(label, LABEL);
+        group.getChildren().addAll( LABEL);
         Scene scene = new Scene(group);
         primaryStage.setScene(scene);
         primaryStage.show();
