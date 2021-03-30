@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Container implements Serializable {
-    private List<Table> list;
+    private final List<Table> list;
 
     public Container(List<Table> list) {
         this.list = list;

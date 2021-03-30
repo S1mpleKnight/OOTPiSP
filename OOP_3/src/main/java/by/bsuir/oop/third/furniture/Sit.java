@@ -1,7 +1,7 @@
 package by.bsuir.oop.third.furniture;
 
-public abstract class Sit extends Furniture{
-    private int places;
+public abstract class Sit extends Furniture {
+    private final int places;
 
     public Sit(int weight, int places) {
         super(weight);

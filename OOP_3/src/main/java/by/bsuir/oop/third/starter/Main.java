@@ -4,6 +4,7 @@ import by.bsuir.oop.third.container.Container;
 import by.bsuir.oop.third.furniture.Table;
 import by.bsuir.oop.third.maker.Manufacturer;
 import by.bsuir.oop.third.serialization.BinarySerialize;
+import by.bsuir.oop.third.serialization.CustomSerialize;
 import by.bsuir.oop.third.serialization.SerializeStrategy;
 import by.bsuir.oop.third.serialization.YAMLSerialize;
 import javafx.application.Application;
@@ -19,6 +20,7 @@ public class Main extends Application {
     private static final Container CONTAINER = new Container();
     private static final File BINARY = new File("./file.txt");
     private static final File YAML = new File("./file.yaml");
+    private static final File CUSTOM = new File("./file_2.txt");
 
     private static final Label LABEL = new Label();
 
@@ -29,10 +31,23 @@ public class Main extends Application {
         CONTAINER.getList().add(new Table(12, 103));
         CONTAINER.getList().add(new Table(11, 104));
         CONTAINER.getList().add(new Table(10, 105));
+        System.out.println( CONTAINER.toString());
        // binary();
-        yaml();
+       // yaml();
+        custom();
 
         launch(args);
+    }
+
+    private static void custom() {
+        SerializeStrategy strategy = CustomSerialize.getCustomVersion();
+        strategy.write(CUSTOM, CONTAINER);
+        List<Table> list = strategy.read(CUSTOM).getList();
+        StringBuilder text = new StringBuilder();
+        for (Table table: list) {
+            text.append(table.toString()).append("\n");
+        }
+        LABEL.setText(text.toString());
     }
 
     private static void yaml() {
