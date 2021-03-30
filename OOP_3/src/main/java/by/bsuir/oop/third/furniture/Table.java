@@ -11,33 +11,18 @@ public class Table extends Put implements Serializable {
         return serialVersionUID;
     }
 
-    private Manufacturer manufacturer;
-
-    public Table(int weight, int square, Manufacturer manufacturer) {
+    public Table(int weight, int square) {
         super(weight, square);
-        this.manufacturer = manufacturer;
     }
 
     public Table() {
     }
 
-    public Table(int weight, int square) {
-        super(weight, square);
-    }
-
-    public Manufacturer getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(Manufacturer manufacturer) {
-        this.manufacturer = manufacturer;
-    }
 
     @Override
     public String toString() {
         return "Table:" +
-                " manufacturer = " + manufacturer +
                 " weight = " + getWeight() +
-                " square = " + getSquare();
+                " area = " + getArea();
     }
 }

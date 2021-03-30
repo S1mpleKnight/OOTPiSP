@@ -1,6 +1,6 @@
 package by.bsuir.oop.third.serialization;
 
-import by.bsuir.oop.third.furniture.Table;
+import by.bsuir.oop.third.container.Container;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,9 +9,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public final class BinarySerialize implements SerializeStrategy {
     private static BinarySerialize binaryVersion;
@@ -26,30 +23,29 @@ public final class BinarySerialize implements SerializeStrategy {
         return binaryVersion;
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public List<Table> read(File file) {
-        List<Table> tables;
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file.getAbsolutePath()))){
-            tables = ((ArrayList<Table>) ois.readObject());
+
+    public Container read(File file) {
+        Container container = null;
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file.getAbsolutePath()))) {
+            container = (Container) ois.readObject();
         } catch (FileNotFoundException exception) {
             System.out.println("Read: File not found");
-            tables = Collections.emptyList();
+
         } catch (IOException exception) {
             System.out.println("Read: I/O exception");
-            tables = Collections.emptyList();
+
         } catch (ClassNotFoundException e) {
             System.out.println("Read: Class not found");
-            tables = Collections.emptyList();
+
         }
-        return tables;
+        return container;
     }
 
     @Override
-    public String write(File file, List<Table> tables) {
+    public String write(File file, Container container) {
         String result;
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file.getAbsolutePath()))){
-            oos.writeObject(tables);
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file.getAbsolutePath()))) {
+            oos.writeObject(container);
             result = "Success";
         } catch (FileNotFoundException exception) {
             System.out.println("Write: File not found");

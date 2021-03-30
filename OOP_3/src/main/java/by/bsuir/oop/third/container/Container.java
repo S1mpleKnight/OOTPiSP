@@ -2,21 +2,18 @@ package by.bsuir.oop.third.container;
 
 import by.bsuir.oop.third.furniture.Table;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Container {
-    private static Container container;
+public class Container implements Serializable {
     private List<Table> list;
 
-    public static Container getContainer() {
-        if (container == null){
-            container = new Container();
-        }
-        return container;
+    public Container(List<Table> list) {
+        this.list = list;
     }
 
-    private Container() {
+    public Container() {
         list = new ArrayList<>();
     }
 

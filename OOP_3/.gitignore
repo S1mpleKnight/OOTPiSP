@@ -1,3 +1,6 @@
 .idea/
 .gradle/
 build/
+lib/
+file.txt
+file.yaml

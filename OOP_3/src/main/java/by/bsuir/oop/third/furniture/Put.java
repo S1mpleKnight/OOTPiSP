@@ -3,11 +3,11 @@ package by.bsuir.oop.third.furniture;
 import java.io.Serializable;
 
 public abstract class Put extends Furniture implements Serializable {
-    private int square;
+    private int area;
 
-    public Put(int weight, int square) {
+    public Put(int weight, int area) {
         super(weight);
-        this.square = square;
+        this.area = area;
     }
 
     public Put() {
@@ -17,11 +17,11 @@ public abstract class Put extends Furniture implements Serializable {
         super(weight);
     }
 
-    public int getSquare() {
-        return square;
+    public int getArea() {
+        return area;
     }
 
-    public void setSquare(int square) {
-        this.square = square;
+    public void setArea(int area) {
+        this.area = area;
     }
 }
