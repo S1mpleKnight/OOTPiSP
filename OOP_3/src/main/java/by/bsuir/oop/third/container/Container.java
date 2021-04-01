@@ -1,7 +1,5 @@
 package by.bsuir.oop.third.container;
 
-import by.bsuir.oop.third.furniture.Table;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

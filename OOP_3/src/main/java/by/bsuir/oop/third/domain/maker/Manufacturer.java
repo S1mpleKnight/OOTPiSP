@@ -1,4 +1,4 @@
-package by.bsuir.oop.third.maker;
+package by.bsuir.oop.third.domain.maker;
 
 import java.io.Serializable;
 

@@ -1,7 +1,7 @@
 package by.bsuir.oop.third.serialization;
 
 import by.bsuir.oop.third.container.Container;
-import by.bsuir.oop.third.furniture.Table;
+import by.bsuir.oop.third.domain.furniture.Table;
 
 import java.io.File;
 

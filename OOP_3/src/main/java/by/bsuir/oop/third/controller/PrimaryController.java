@@ -1,7 +1,7 @@
 package by.bsuir.oop.third.controller;
 
 import by.bsuir.oop.third.container.Container;
-import by.bsuir.oop.third.furniture.Table;
+import by.bsuir.oop.third.domain.furniture.Table;
 import by.bsuir.oop.third.info.Info;
 import by.bsuir.oop.third.serialization.BinarySerializeStrategy;
 import by.bsuir.oop.third.serialization.CustomTablesSerializeStrategy;
@@ -90,19 +90,15 @@ public class PrimaryController {
 
         tablesButton.setOnAction(e -> {
             try {
-                Stage mainStage = Main.getStage();
-                mainStage.hide();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("table.fxml"))));
-                stage.setTitle("Tables");
-                stage.setResizable(false);
-                tableStage = stage;
-                stage.showAndWait();
-                mainStage.show();
+                showTables();
             } catch (IOException exception) {
-                exception.printStackTrace();
+                showAlert(exception.getMessage(), false);
             }
         });
+    }
+
+    private void showTables() throws IOException {
+        Main.setScene("table.fxml", PrimaryController.class);
     }
 
     private void showAlert(String message, boolean state) {

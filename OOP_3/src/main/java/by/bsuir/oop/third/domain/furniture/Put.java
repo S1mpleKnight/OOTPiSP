@@ -1,4 +1,4 @@
-package by.bsuir.oop.third.furniture;
+package by.bsuir.oop.third.domain.furniture;
 
 import java.io.Serializable;
 

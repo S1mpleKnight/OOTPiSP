@@ -1,7 +1,7 @@
 package by.bsuir.oop.third.serialization;
 
 import by.bsuir.oop.third.container.Container;
-import by.bsuir.oop.third.furniture.Table;
+import by.bsuir.oop.third.domain.furniture.Table;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;

@@ -1,6 +1,6 @@
-package by.bsuir.oop.third.furniture;
+package by.bsuir.oop.third.domain.furniture;
 
-import by.bsuir.oop.third.maker.Manufacturer;
+import by.bsuir.oop.third.domain.maker.Manufacturer;
 
 public class Sofa extends Sit {
     private Manufacturer maker;

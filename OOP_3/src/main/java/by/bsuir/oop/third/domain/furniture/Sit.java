@@ -1,4 +1,4 @@
-package by.bsuir.oop.third.furniture;
+package by.bsuir.oop.third.domain.furniture;
 
 public abstract class Sit extends Furniture {
     private Integer places;

@@ -1,11 +1,9 @@
 package by.bsuir.oop.third.info;
 
 import by.bsuir.oop.third.container.Container;
-import by.bsuir.oop.third.furniture.Sofa;
-import by.bsuir.oop.third.furniture.Table;
-import by.bsuir.oop.third.maker.Manufacturer;
-
-import java.util.List;
+import by.bsuir.oop.third.domain.furniture.Sofa;
+import by.bsuir.oop.third.domain.furniture.Table;
+import by.bsuir.oop.third.domain.maker.Manufacturer;
 
 public class Info {
     private static Info info;
