@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TablesController {
+    private static Table tableToUpdate;
     private DTO dto;
     private ArrayList<DTO> dtos;
     private ObservableList<DTO> tables;
@@ -52,6 +53,10 @@ public class TablesController {
             dtos.add(new DTO(table.getArea(), table.getWeight()));
         }
         return dtos;
+    }
+
+    public static Table getTableToUpdate() {
+        return tableToUpdate;
     }
 
     @FXML
@@ -89,15 +94,46 @@ public class TablesController {
             }
         });
 
+        updateButton.setOnAction(e -> {
+            if (dto != null) {
+                tableToUpdate = Info.getInfo().getTables().getList().get(dtos.indexOf(dto));
+                try {
+                    showUpdating();
+                } catch (IOException exception) {
+                    showAlert(exception.getMessage(), false);
+                }
+            } else {
+                showAlert("Select row", false);
+            }
+        });
+
         backButton.setOnAction(e -> {
             Main.getStage().setScene(Main.getMainScene());
         });
     }
 
-    private void reset(){
+    private void showUpdating() throws IOException {
+        Stage stage = new Stage();
+        Main.getStage().hide();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("tablesUpdating.fxml"))));
+        stage.setResizable(false);
+        stage.setTitle("Updating");
+        stage.showAndWait();
+        reset();
+        Main.getStage().show();
+    }
+
+    private void reset() {
         dtos = convert(Info.getInfo().getTables().getList());
         tables = FXCollections.observableArrayList(dtos);
         tableTables.setItems(tables);
+    }
+
+    private void showAlert(String message, boolean state) {
+        Alert alert = new Alert(state ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
+        alert.setHeaderText(state ? "Information" : "Error");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private static class DTO {
@@ -108,12 +144,5 @@ public class TablesController {
             this.area = new SimpleIntegerProperty(area);
             this.weight = new SimpleIntegerProperty(weight);
         }
-    }
-
-    private void showAlert(String message, boolean state) {
-        Alert alert = new Alert(state ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
-        alert.setHeaderText(state ? "Information" : "Error");
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }
