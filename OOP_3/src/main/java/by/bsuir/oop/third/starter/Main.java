@@ -21,16 +21,8 @@ public class Main extends Application {
     private static Scene mainScene;
 
     public static void main(String[] args) {
-        yaml();
         launch(args);
     }
-
-    private static void yaml() {
-        SerializeStrategy strategy = YAMLSerializeStrategy.getYamlVersion();
-        List<Table> list = strategy.read(YAML).getList();
-        Info.getInfo().setTables(new Container<>(list));
-    }
-
 
     @Override
     public void start(Stage primaryStage) {

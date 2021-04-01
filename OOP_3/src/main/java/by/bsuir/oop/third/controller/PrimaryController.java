@@ -9,8 +9,6 @@ import by.bsuir.oop.third.serialization.SerializeStrategy;
 import by.bsuir.oop.third.serialization.YAMLSerializeStrategy;
 import by.bsuir.oop.third.starter.Main;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -21,36 +19,23 @@ import java.io.File;
 import java.io.IOException;
 
 public class PrimaryController {
-    private static SerializeStrategy strategy = YAMLSerializeStrategy.getYamlVersion();
     private static final Info info = Info.getInfo();
     private static final File file = new File(info.getFILE_PATH());
-    private static Stage tableStage;
-
-    public static Stage getTableStage() {
-        return tableStage;
-    }
-
+    private static SerializeStrategy strategy = YAMLSerializeStrategy.getYamlVersion();
     @FXML
     private RadioButton yamlButton;
-
     @FXML
     private ToggleGroup serializationType;
-
     @FXML
     private RadioButton binaryButton;
-
     @FXML
     private RadioButton customButton;
-
     @FXML
     private Button serializeButton;
-
     @FXML
     private Button deserializeButton;
-
     @FXML
     private Button tablesButton;
-
     @FXML
     private Button sofaButton;
 
@@ -69,10 +54,11 @@ public class PrimaryController {
         });
 
         deserializeButton.setOnAction(e -> {
+            Container<Table> oldContainer = info.getTables();
             Container<Table> container = strategy.read(file);
             if (container == null) {
                 showAlert("Container is not loaded", false);
-                container = new Container();
+                container = oldContainer;
             } else {
                 showAlert("Success: information have been deserialized", true);
             }

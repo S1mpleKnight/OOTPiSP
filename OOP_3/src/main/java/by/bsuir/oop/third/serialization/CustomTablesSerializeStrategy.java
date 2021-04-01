@@ -29,15 +29,19 @@ public class CustomTablesSerializeStrategy implements SerializeStrategy {
 
     @Override
     public Container<Table> read(File file) {
-        String[] lexemes = readFile(file).split("[\\[\\]]")[1].split(",");
-        List<Table> tables = new ArrayList<>();
-        for (String lexeme : lexemes) {
-            String[] fields = lexeme.split(":");
-            int weight = Integer.parseInt(fields[1].split("=")[1]);
-            int area = Integer.parseInt(fields[2].split("=")[1]);
-            tables.add(new Table(area, weight));
+        String text = readFile(file);
+        if (text.matches(".*[\\[\\]{},]+.*[\\[\\]{},]+.*")) {
+            String[] lexemes = text.split("[\\[\\]]")[1].split(",");
+            List<Table> tables = new ArrayList<>();
+            for (String lexeme : lexemes) {
+                String[] fields = lexeme.split(":");
+                int weight = Integer.parseInt(fields[1].split("=")[1]);
+                int area = Integer.parseInt(fields[2].split("=")[1]);
+                tables.add(new Table(area, weight));
+            }
+            return new Container<>(tables);
         }
-        return new Container<>(tables);
+        return null;
     }
 
     private String readFile(File file) {
