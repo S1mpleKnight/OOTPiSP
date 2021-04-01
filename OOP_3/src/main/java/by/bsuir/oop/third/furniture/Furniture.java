@@ -3,7 +3,7 @@ package by.bsuir.oop.third.furniture;
 import java.io.Serializable;
 
 public abstract class Furniture implements Serializable {
-    private int weight;
+    private Integer weight;
 
     public Furniture(int weight) {
         this.weight = weight;
@@ -12,11 +12,11 @@ public abstract class Furniture implements Serializable {
     public Furniture() {
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 }

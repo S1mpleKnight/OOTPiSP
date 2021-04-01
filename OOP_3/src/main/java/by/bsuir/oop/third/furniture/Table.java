@@ -3,7 +3,7 @@ package by.bsuir.oop.third.furniture;
 import java.io.Serializable;
 
 public class Table extends Put implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
 
     public Table(int weight, int area) {
         super(weight, area);
@@ -12,7 +12,7 @@ public class Table extends Put implements Serializable {
     public Table() {
     }
 
-    public static long getSerialVersionUID() {
+    public static Long getSerialVersionUID() {
         return serialVersionUID;
     }
 

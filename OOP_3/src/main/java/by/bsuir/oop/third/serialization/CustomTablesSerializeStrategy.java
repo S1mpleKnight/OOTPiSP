@@ -14,21 +14,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class CustomTablesSerialize implements SerializeStrategy {
-    private static CustomTablesSerialize customVersion;
+public class CustomTablesSerializeStrategy implements SerializeStrategy {
+    private static CustomTablesSerializeStrategy customVersion;
 
-    private CustomTablesSerialize() {
+    private CustomTablesSerializeStrategy() {
     }
 
-    public static CustomTablesSerialize getCustomVersion() {
+    public static CustomTablesSerializeStrategy getCustomVersion() {
         if (customVersion == null) {
-            customVersion = new CustomTablesSerialize();
+            customVersion = new CustomTablesSerializeStrategy();
         }
         return customVersion;
     }
 
     @Override
-    public Container read(File file) {
+    public Container<Table> read(File file) {
         String[] lexemes = readFile(file).split("[\\[\\]]")[1].split(",");
         List<Table> tables = new ArrayList<>();
         for (String lexeme : lexemes) {
@@ -37,7 +37,7 @@ public class CustomTablesSerialize implements SerializeStrategy {
             int area = Integer.parseInt(fields[2].split("=")[1]);
             tables.add(new Table(area, weight));
         }
-        return new Container(tables);
+        return new Container<>(tables);
     }
 
     private String readFile(File file) {
@@ -51,14 +51,23 @@ public class CustomTablesSerialize implements SerializeStrategy {
     }
 
     @Override
-    public String write(File file, Container container) {
-        String result = "";
+    public String write(File file, Container<Table> container) {
+        String result;
+        try {
+            if (file.createNewFile()) {
+                System.out.println("Write: file created");
+            }
+        } catch (IOException exception) {
+            result = "I/O exception";
+            return result;
+        }
         try (Writer writer = new FileWriter(file, StandardCharsets.UTF_8)) {
             writer.write(container.toString());
             writer.flush();
+            result = "Success";
         } catch (IOException exception) {
             result = "I/O exception";
-            exception.printStackTrace();
+            System.out.println("I/O exception");
         }
         return result;
     }

@@ -6,10 +6,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Container implements Serializable {
-    private final List<Table> list;
+public class Container<T> implements Serializable {
+    private final List<T> list;
 
-    public Container(List<Table> list) {
+    public Container(List<T> list) {
         this.list = list;
     }
 
@@ -17,7 +17,7 @@ public class Container implements Serializable {
         list = new ArrayList<>();
     }
 
-    public List<Table> getList() {
+    public List<T> getList() {
         return list;
     }
 

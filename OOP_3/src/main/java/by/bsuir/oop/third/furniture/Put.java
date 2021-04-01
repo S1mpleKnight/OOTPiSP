@@ -3,7 +3,7 @@ package by.bsuir.oop.third.furniture;
 import java.io.Serializable;
 
 public abstract class Put extends Furniture implements Serializable {
-    private int area;
+    private Integer area;
 
     public Put(int weight, int area) {
         super(weight);
@@ -17,11 +17,11 @@ public abstract class Put extends Furniture implements Serializable {
         super(weight);
     }
 
-    public int getArea() {
+    public Integer getArea() {
         return area;
     }
 
-    public void setArea(int area) {
+    public void setArea(Integer area) {
         this.area = area;
     }
 }

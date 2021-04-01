@@ -2,4 +2,4 @@
 .gradle/
 build/
 lib/
-files/
+file.txt

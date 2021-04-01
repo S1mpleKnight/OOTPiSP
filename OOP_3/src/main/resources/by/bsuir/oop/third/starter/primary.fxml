@@ -10,7 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.oop.third.controller.PrimaryController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.oop.third.controller.PrimaryController">
    <children>
       <HBox alignment="CENTER" prefHeight="126.0" prefWidth="800.0" style="-fx-background-color: grey;">
          <children>
@@ -77,7 +79,7 @@
       <Separator prefWidth="200.0" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="130.0">
          <children>
-            <Button fx:id="tabelsButton" mnemonicParsing="false" prefWidth="150.0" text="Столы">
+            <Button fx:id="tablesButton" mnemonicParsing="false" prefWidth="150.0" text="Столы">
                <font>
                   <Font size="16.0" />
                </font>
