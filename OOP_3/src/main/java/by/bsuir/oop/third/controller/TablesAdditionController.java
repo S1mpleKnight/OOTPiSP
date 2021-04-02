@@ -38,11 +38,15 @@ public class TablesAdditionController {
     private boolean checkWeightField() {
         if (weightField.getText().equals("")) {
             return false;
+        } else if (weightField.getText().compareTo( Integer.toString(Integer.MAX_VALUE)) < 0) {
+            return false;
         } else return weightField.getText().matches("[0-9]+");
     }
 
     private boolean checkAreaField() {
         if (areaField.getText().equals("")) {
+            return false;
+        } else if (weightField.getText().compareTo( Integer.toString(Integer.MAX_VALUE)) < 0) {
             return false;
         } else return areaField.getText().matches("[0-9]+");
     }
