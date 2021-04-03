@@ -1,22 +1,24 @@
 package by.bsuir.oop.third.domain.furniture;
 
+import by.bsuir.oop.third.domain.maker.Manufacturer;
+
 import java.io.Serializable;
 
 public abstract class Furniture implements Serializable {
-    private Integer weight;
-
-    public Furniture(int weight) {
-        this.weight = weight;
-    }
+    private Manufacturer maker;
 
     public Furniture() {
     }
 
-    public Integer getWeight() {
-        return weight;
+    public Furniture(Manufacturer maker) {
+        this.maker = maker;
     }
 
-    public void setWeight(Integer weight) {
-        this.weight = weight;
+    public Manufacturer getMaker() {
+        return maker;
+    }
+
+    public void setMaker(Manufacturer maker) {
+        this.maker = maker;
     }
 }

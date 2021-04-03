@@ -2,6 +2,7 @@ package by.bsuir.oop.third.serialization;
 
 import by.bsuir.oop.third.container.Container;
 import by.bsuir.oop.third.domain.furniture.Table;
+import by.bsuir.oop.third.domain.maker.Manufacturer;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -35,9 +36,10 @@ public class CustomTablesSerializeStrategy implements SerializeStrategy {
             List<Table> tables = new ArrayList<>();
             for (String lexeme : lexemes) {
                 String[] fields = lexeme.split(":");
-                int weight = Integer.parseInt(fields[1].split("=")[1]);
+                Manufacturer maker = Manufacturer.valueOf(fields[1].split("=")[1]);
                 int area = Integer.parseInt(fields[2].split("=")[1]);
-                tables.add(new Table(area, weight));
+                int legs = Integer.parseInt(fields[3].split("=")[1]);
+                tables.add(new Table(maker, area, legs));
             }
             return new Container<>(tables);
         }

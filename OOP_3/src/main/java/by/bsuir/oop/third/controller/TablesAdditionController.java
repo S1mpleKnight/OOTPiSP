@@ -1,27 +1,48 @@
 package by.bsuir.oop.third.controller;
 
 import by.bsuir.oop.third.domain.furniture.Table;
+import by.bsuir.oop.third.domain.maker.Manufacturer;
 import by.bsuir.oop.third.info.Info;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class TablesAdditionController {
+    private String choice;
     @FXML
     private TextField areaField;
     @FXML
-    private TextField weightField;
+    private TextField legsField;
     @FXML
     private Button additionButton;
+    @FXML
+    private ComboBox<String> makersComboBox;
 
     @FXML
     void initialize() {
+        List<String> makers = Arrays.stream(Manufacturer.values())
+                .map(Manufacturer::toString)
+                .collect(Collectors.toList());
+        ObservableList<String> makersList = FXCollections.observableArrayList(makers);
+        makersComboBox.getItems().addAll(makersList);
+        makersComboBox.setOnAction(e -> {
+            choice = makersComboBox.getValue();
+        });
+
         additionButton.setOnAction(e -> {
-            if (checkWeightField() && checkAreaField()) {
-                int weight = Integer.parseInt(weightField.getText());
+            if (checkLegsField() && checkAreaField() && checkMakerField()) {
+                int legs = Integer.parseInt(legsField.getText());
                 int area = Integer.parseInt(areaField.getText());
-                Info.getInfo().getTables().getList().add(new Table(weight, area));
+                Manufacturer maker = Manufacturer.valueOf(choice);
+                Info.getInfo().getTables().getList().add(new Table(maker, legs, area));
                 reset();
                 showAlert("Info added", true);
             } else {
@@ -32,21 +53,25 @@ public class TablesAdditionController {
 
     private void reset() {
         areaField.setText("");
-        weightField.setText("");
+       legsField.setText("");
     }
 
-    private boolean checkWeightField() {
-        if (weightField.getText().equals("")) {
+    private boolean checkMakerField(){
+        return choice != null;
+    }
+
+    private boolean checkLegsField() {
+        if (legsField.getText().equals("")) {
             return false;
-        } else if (weightField.getText().compareTo( Integer.toString(Integer.MAX_VALUE)) < 0) {
+        } else if (legsField.getText().length() >= 10) {
             return false;
-        } else return weightField.getText().matches("[0-9]+");
+        } else return legsField.getText().matches("[0-9]+");
     }
 
     private boolean checkAreaField() {
         if (areaField.getText().equals("")) {
             return false;
-        } else if (weightField.getText().compareTo( Integer.toString(Integer.MAX_VALUE)) < 0) {
+        } else if (areaField.getText().length() >= 10) {
             return false;
         } else return areaField.getText().matches("[0-9]+");
     }

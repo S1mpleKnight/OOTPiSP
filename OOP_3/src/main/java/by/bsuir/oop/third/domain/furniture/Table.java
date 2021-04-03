@@ -1,15 +1,31 @@
 package by.bsuir.oop.third.domain.furniture;
 
+import by.bsuir.oop.third.domain.maker.Manufacturer;
+
 import java.io.Serializable;
 
-public class Table extends Put implements Serializable {
-    private static final Long serialVersionUID = 1L;
+public class Table extends Rack implements Serializable {
+    private static final Long serialVersionUID = 2L;
+    private int numberOfLegs;
 
-    public Table(int weight, int area) {
-        super(weight, area);
+    public int getNumberOfLegs() {
+        return numberOfLegs;
+    }
+
+    public void setNumberOfLegs(int numberOfLegs) {
+        this.numberOfLegs = numberOfLegs;
+    }
+
+    public Table(Manufacturer maker, Integer area, int numberOfLegs) {
+        super(maker, area);
+        this.numberOfLegs = numberOfLegs;
     }
 
     public Table() {
+    }
+
+    public Table(Integer area) {
+        super(area);
     }
 
     public static Long getSerialVersionUID() {
@@ -19,7 +35,8 @@ public class Table extends Put implements Serializable {
     @Override
     public String toString() {
         return "Table" +
-                ":weight=" + getWeight() +
-                ":area=" + getArea();
+                ":maker=" + getMaker() +
+                ":area=" + getArea() +
+                ":legs=" + getNumberOfLegs();
     }
 }

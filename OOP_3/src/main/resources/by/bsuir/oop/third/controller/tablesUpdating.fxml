@@ -2,13 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="549.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.oop.third.controller.TablesUpdatingController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="549.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.oop.third.controller.TablesUpdatingController">
     <children>
         <Label prefHeight="60.0" prefWidth="168.0" text="Обновление">
             <font>
@@ -29,16 +30,21 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="86.0" prefWidth="308.0" spacing="10.0" style="-fx-background-color: white;">
                     <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="57.0" text="Масса">
+                        <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="57.0" text="Ножки">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="weightField" prefWidth="150.0" />
+                        <TextField fx:id="legsField" prefWidth="150.0" />
                     </children>
                 </HBox>
             </children>
         </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
+         <children>
+            <ComboBox fx:id="makersComboBox" prefWidth="150.0" />
+         </children>
+      </HBox>
         <HBox alignment="CENTER" prefHeight="102.0" prefWidth="550.0" spacing="30.0" style="-fx-background-color: white;">
             <children>
                 <Button fx:id="updatingButton" mnemonicParsing="false" prefHeight="22.0" prefWidth="220.0" text="Обновить">

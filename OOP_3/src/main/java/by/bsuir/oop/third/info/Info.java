@@ -1,24 +1,15 @@
 package by.bsuir.oop.third.info;
 
 import by.bsuir.oop.third.container.Container;
-import by.bsuir.oop.third.domain.furniture.Sofa;
 import by.bsuir.oop.third.domain.furniture.Table;
-import by.bsuir.oop.third.domain.maker.Manufacturer;
 
 public class Info {
     private static Info info;
     private final String FILE_PATH = "file.txt";
     private Container<Table> tables;
-    private Container<Sofa> sofas;
-    private Container<Manufacturer> manufactures;
-    private Info() {
-        manufactures = new Container<>();
-        tables = new Container<>();
-        sofas = new Container<>();
-    }
 
-    public String getFILE_PATH() {
-        return FILE_PATH;
+    private Info() {
+        tables = new Container<>();
     }
 
     public static Info getInfo() {
@@ -26,6 +17,10 @@ public class Info {
             info = new Info();
         }
         return info;
+    }
+
+    public String getFILE_PATH() {
+        return FILE_PATH;
     }
 
     public Container<Table> getTables() {
@@ -36,15 +31,4 @@ public class Info {
         this.tables = tables;
     }
 
-    public void setSofas(Container<Sofa> sofas) {
-        this.sofas = sofas;
-    }
-
-    public Container<Manufacturer> getManufactures() {
-        return manufactures;
-    }
-
-    public void setManufactures(Container<Manufacturer> manufactures) {
-        this.manufactures = manufactures;
-    }
 }

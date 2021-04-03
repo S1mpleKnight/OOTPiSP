@@ -5,6 +5,8 @@ import by.bsuir.oop.third.info.Info;
 import by.bsuir.oop.third.starter.Main;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -45,12 +47,15 @@ public class TablesController {
     private TableColumn<DTO, String> areaColumn;
 
     @FXML
-    private TableColumn<DTO, String> weightColumn;
+    private TableColumn<DTO, String> legsColumn;
+
+    @FXML
+    private TableColumn<DTO, String> makerColumn;
 
     private static ArrayList<DTO> convert(List<Table> tables) {
         ArrayList<DTO> dtos = new ArrayList<>();
         for (Table table : tables) {
-            dtos.add(new DTO(table.getArea(), table.getWeight()));
+            dtos.add(new DTO(table.getArea(), table.getNumberOfLegs(), table.getMaker().toString()));
         }
         return dtos;
     }
@@ -62,7 +67,8 @@ public class TablesController {
     @FXML
     void initialize() {
         areaColumn.setCellValueFactory(area -> area.getValue().area.asString());
-        weightColumn.setCellValueFactory(weight -> weight.getValue().weight.asString());
+        legsColumn.setCellValueFactory(weight -> weight.getValue().legs.asString());
+        makerColumn.setCellValueFactory(maker -> maker.getValue().maker);
         dtos = convert(Info.getInfo().getTables().getList());
         tables = FXCollections.observableArrayList(dtos);
         tableTables.setItems(tables);
@@ -95,15 +101,19 @@ public class TablesController {
         });
 
         updateButton.setOnAction(e -> {
-            if (dto != null) {
-                tableToUpdate = Info.getInfo().getTables().getList().get(dtos.indexOf(dto));
-                try {
-                    showUpdating();
-                } catch (IOException exception) {
-                    showAlert(exception.getMessage(), false);
+            if (dtos.size() != 0) {
+                if (dto != null) {
+                    tableToUpdate = Info.getInfo().getTables().getList().get(dtos.indexOf(dto));
+                    try {
+                        showUpdating();
+                    } catch (IOException exception) {
+                        showAlert(exception.getMessage(), false);
+                    }
+                } else {
+                    showAlert("Select row", false);
                 }
             } else {
-                showAlert("Select row", false);
+                showAlert("There are nothing to change", false);
             }
         });
 
@@ -138,11 +148,13 @@ public class TablesController {
 
     private static class DTO {
         IntegerProperty area;
-        IntegerProperty weight;
+        IntegerProperty legs;
+        StringProperty maker;
 
-        public DTO(Integer area, Integer weight) {
+        public DTO(Integer area, Integer legs, String maker) {
             this.area = new SimpleIntegerProperty(area);
-            this.weight = new SimpleIntegerProperty(weight);
+            this.legs = new SimpleIntegerProperty(legs);
+            this.maker = new SimpleStringProperty(maker);
         }
     }
 }
