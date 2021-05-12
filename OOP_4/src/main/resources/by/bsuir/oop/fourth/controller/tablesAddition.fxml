@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="549.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.oop.fourth.controller.TablesAdditionController">
+   <children>
+      <Label prefHeight="58.0" prefWidth="148.0" text="Добавление">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="106.0" prefWidth="550.0" style="-fx-background-color: white;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="86.0" prefWidth="308.0" spacing="10.0" style="-fx-background-color: white;">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="82.0" text="Площадь">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="areaField" prefHeight="26.0" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="86.0" prefWidth="308.0" spacing="10.0" style="-fx-background-color: white;">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="57.0" text="Ножки">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="legsField" prefWidth="150.0" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
+         <children>
+            <ComboBox fx:id="makersComboBox" prefWidth="150.0" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="68.0" prefWidth="550.0" spacing="30.0" style="-fx-background-color: white;">
+         <children>
+            <Button fx:id="additionButton" mnemonicParsing="false" prefHeight="22.0" prefWidth="220.0" text="Добавить">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

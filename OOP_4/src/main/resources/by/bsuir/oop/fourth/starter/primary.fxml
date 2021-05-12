@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.oop.fourth.controller.PrimaryController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="126.0" prefWidth="800.0" style="-fx-background-color: grey;">
+         <children>
+            <Label prefHeight="52.0" prefWidth="90.0" text="Lab_3" textFill="WHITE">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <HBox alignment="CENTER" prefHeight="119.0" prefWidth="800.0" spacing="90.0">
+         <children>
+            <RadioButton fx:id="yamlButton" mnemonicParsing="false" selected="true" text="YAML">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="serializationType" />
+               </toggleGroup>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <RadioButton fx:id="binaryButton" mnemonicParsing="false" text="Binary" toggleGroup="$serializationType">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <RadioButton fx:id="customButton" contentDisplay="CENTER" mnemonicParsing="false" text="Custom" toggleGroup="$serializationType">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <HBox alignment="CENTER" prefHeight="175.0" prefWidth="800.0" spacing="70.0">
+         <children>
+            <Button fx:id="serializeButton" mnemonicParsing="false" prefWidth="210.0" text="Сериализовать">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="deserializeButton" mnemonicParsing="false" prefWidth="210.0" text="Десериализовать">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <HBox alignment="CENTER" prefHeight="175.0" prefWidth="800.0" spacing="130.0">
+         <children>
+            <Button fx:id="tablesButton" mnemonicParsing="false" prefHeight="46.0" prefWidth="226.0" text="Работа со списком">
+               <font>
+                  <Font size="21.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+   </children>
+</VBox>
