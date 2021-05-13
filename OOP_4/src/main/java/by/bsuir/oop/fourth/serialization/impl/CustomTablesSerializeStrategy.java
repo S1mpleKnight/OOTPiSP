@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class CustomTablesSerializeStrategy implements SerializeStrategy {
+public final class CustomTablesSerializeStrategy implements SerializeStrategy {
     private static CustomTablesSerializeStrategy customVersion;
 
     private CustomTablesSerializeStrategy() {

@@ -16,7 +16,7 @@ import by.bsuir.oop.fourth.starter.Main;
 import java.io.File;
 import java.io.IOException;
 
-public class PrimaryController {
+public final class PrimaryController {
     private static final Info info = Info.getInfo();
     private static final File file = new File(info.getFILE_PATH());
     private static SerializeStrategy strategy = YAMLSerializeStrategy.getYamlVersion();

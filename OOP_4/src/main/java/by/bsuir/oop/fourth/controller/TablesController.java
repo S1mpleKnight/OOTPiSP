@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TablesController {
+public final class TablesController {
     private static Table tableToUpdate;
     private DTO dto;
     private ArrayList<DTO> dtos;

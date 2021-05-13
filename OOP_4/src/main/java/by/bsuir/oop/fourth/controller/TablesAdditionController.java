@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TablesAdditionController {
+public final class TablesAdditionController {
     private String choice;
     @FXML
     private TextField areaField;

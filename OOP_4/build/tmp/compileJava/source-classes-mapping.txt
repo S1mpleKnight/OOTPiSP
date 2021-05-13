@@ -1,4 +1,0 @@
-by/bsuir/oop/fourth/controllers/MainController.java
- by.bsuir.oop.fourth.controllers.MainController
-by/bsuir/oop/fourth/starter/Main.java
- by.bsuir.oop.fourth.starter.Main
