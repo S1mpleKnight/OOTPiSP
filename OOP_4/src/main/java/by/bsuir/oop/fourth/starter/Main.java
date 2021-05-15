@@ -2,6 +2,7 @@ package by.bsuir.oop.fourth.starter;
 
 import by.bsuir.oop.fourth.compression.api.Compression;
 import by.bsuir.oop.fourth.compression.impl.SimpleCompression;
+import by.bsuir.oop.fourth.encryption.impl.LFSR;
 import by.bsuir.oop.fourth.util.Info;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,10 @@ public class Main extends Application {
     private static Scene mainScene;
 
     public static void main(String[] args) {
+        String slovo = "ohuet";
+        String another = new LFSR().encrypt(slovo);
+        System.out.println(another);
+        System.out.println(new LFSR().decrypt(another));
         launch(args);
     }
 
