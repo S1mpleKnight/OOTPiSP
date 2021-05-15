@@ -1,7 +1,7 @@
 package by.bsuir.oop.fourth.controller;
 import by.bsuir.oop.fourth.container.Container;
 import by.bsuir.oop.fourth.domain.furniture.Table;
-import by.bsuir.oop.fourth.info.Info;
+import by.bsuir.oop.fourth.util.Info;
 import by.bsuir.oop.fourth.serialization.api.SerializeStrategy;
 import by.bsuir.oop.fourth.serialization.impl.BinarySerializeStrategy;
 import by.bsuir.oop.fourth.serialization.impl.CustomTablesSerializeStrategy;
@@ -53,23 +53,25 @@ public final class PrimaryController {
 
         deserializeButton.setOnAction(e -> {
             Container<Table> oldContainer = info.getTables();
-            Container<Table> container = strategy.read(file);
-            if (container == null) {
+            Container<Table> container;
+            try {
+                container = strategy.read(file);
+            } catch (IOException ioException) {
                 showAlert("Container is not loaded", false);
                 container = oldContainer;
-            } else {
-                showAlert("Success: information have been deserialized", true);
             }
+            showAlert("Success: information have been deserialized", true);
             info.setTables(container);
         });
 
         serializeButton.setOnAction(e -> {
-            String result = strategy.write(file, info.getTables());
-            if (!result.equals("Success")) {
-                showAlert(result, false);
-            } else {
-                showAlert(result + ": information have been serialized", true);
+            boolean result;
+            try {
+                result = strategy.write(file, info.getTables());
+            } catch (IOException ioException) {
+                result = false;
             }
+            showAlert(result);
         });
 
         tablesButton.setOnAction(e -> {
@@ -83,6 +85,13 @@ public final class PrimaryController {
 
     private void showTables() throws IOException {
         Main.setScene("table.fxml", PrimaryController.class);
+    }
+
+    private void showAlert(boolean state) {
+        Alert alert = new Alert(state ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
+        alert.setHeaderText(state ? "Information" : "Error");
+        alert.setContentText(state ? "Information have been serialized" : "Some mistakes happened");
+        alert.showAndWait();
     }
 
     private void showAlert(String message, boolean state) {

@@ -2,7 +2,7 @@ package by.bsuir.oop.fourth.controller;
 
 import by.bsuir.oop.fourth.domain.furniture.Table;
 import by.bsuir.oop.fourth.domain.maker.Manufacturer;
-import by.bsuir.oop.fourth.info.Info;
+import by.bsuir.oop.fourth.util.Info;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

@@ -3,6 +3,8 @@ package by.bsuir.oop.fourth.serialization.impl;
 import by.bsuir.oop.fourth.container.Container;
 import by.bsuir.oop.fourth.domain.furniture.Table;
 import by.bsuir.oop.fourth.serialization.api.SerializeStrategy;
+import by.bsuir.oop.fourth.util.api.FileWorker;
+import by.bsuir.oop.fourth.util.impl.SimpleFileWorker;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,6 +16,7 @@ import java.io.ObjectOutputStream;
 
 public final class BinarySerializeStrategy implements SerializeStrategy {
     private static BinarySerializeStrategy binaryVersion;
+    private static final FileWorker FILE_WORKER = SimpleFileWorker.getWorker();
 
     private BinarySerializeStrategy() {
     }
@@ -41,26 +44,13 @@ public final class BinarySerializeStrategy implements SerializeStrategy {
     }
 
     @Override
-    public String write(File file, Container<Table> container) {
-        String result;
-        try {
-            if (file.createNewFile()) {
-                System.out.println("Write: file created");
-            }
-        } catch (IOException exception) {
-            result = "I/O exception";
-            return result;
-        }
+    public boolean write(File file, Container<Table> container) throws IOException {
+        FILE_WORKER.createFile(file);
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file.getAbsolutePath()))) {
             oos.writeObject(container);
-            result = "Success";
-        } catch (FileNotFoundException exception) {
-            System.out.println("Write: File not found");
-            result = "File not found";
         } catch (IOException exception) {
-            result = "I/O exception";
-            System.out.println("Write: I/O exception");
+            throw new IOException("Can not write info");
         }
-        return result;
+        return true;
     }
 }

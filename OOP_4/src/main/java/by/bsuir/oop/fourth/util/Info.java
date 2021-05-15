@@ -1,4 +1,4 @@
-package by.bsuir.oop.fourth.info;
+package by.bsuir.oop.fourth.util;
 
 import by.bsuir.oop.fourth.container.Container;
 import by.bsuir.oop.fourth.domain.furniture.Table;

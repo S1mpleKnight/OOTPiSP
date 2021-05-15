@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Container<T> implements Serializable {
+public class Container<T> implements Serializable{
     private final List<T> list;
 
     public Container(List<T> list) {
@@ -24,5 +24,9 @@ public class Container<T> implements Serializable {
         return "Container { \n" +
                 "list=" + list +
                 " \n}";
+    }
+
+    public String uploadInfo(){
+       return toString();
     }
 }

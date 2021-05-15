@@ -1,6 +1,8 @@
 package by.bsuir.oop.fourth.starter;
 
-import by.bsuir.oop.fourth.info.Info;
+import by.bsuir.oop.fourth.compression.api.Compression;
+import by.bsuir.oop.fourth.compression.impl.SimpleCompression;
+import by.bsuir.oop.fourth.util.Info;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,7 +29,7 @@ public class Main extends Application {
         } catch (IOException exception) {
             System.out.println("UUps");
         }
-        primaryStage.setTitle("Lab_3");
+        primaryStage.setTitle("Lab_4-5");
         primaryStage.setResizable(false);
         primaryStage.show();
     }

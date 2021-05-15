@@ -3,6 +3,8 @@ package by.bsuir.oop.fourth.serialization.impl;
 import by.bsuir.oop.fourth.container.Container;
 import by.bsuir.oop.fourth.domain.furniture.Table;
 import by.bsuir.oop.fourth.serialization.api.SerializeStrategy;
+import by.bsuir.oop.fourth.util.api.FileWorker;
+import by.bsuir.oop.fourth.util.impl.SimpleFileWorker;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -16,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 public final class YAMLSerializeStrategy implements SerializeStrategy {
     private static YAMLSerializeStrategy yamlVersion;
     private final ObjectMapper mapper;
+    private final static FileWorker FILE_WORKER = SimpleFileWorker.getWorker();
 
     private YAMLSerializeStrategy() {
         mapper = new ObjectMapper(new YAMLFactory());
@@ -40,22 +43,13 @@ public final class YAMLSerializeStrategy implements SerializeStrategy {
     }
 
     @Override
-    public String write(File file, Container<Table> container) {
-        String result;
-        try {
-            if (file.createNewFile()) {
-                System.out.println("Write: file created");
-            }
-        } catch (IOException exception) {
-            result = "Write: I/O exception";
-            return result;
-        }
+    public boolean write(File file, Container<Table> container) throws IOException {
+        FILE_WORKER.createFile(file);
         try (Writer writer = new FileWriter(file.getAbsolutePath(), StandardCharsets.UTF_8)) {
             mapper.writeValue(writer, container);
-            result = "Success";
         } catch (IOException exception) {
-            result = "Write: I/O exception";
+            throw new IOException("Can not write info");
         }
-        return result;
+        return true;
     }
 }

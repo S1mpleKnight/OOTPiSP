@@ -1,7 +1,7 @@
 package by.bsuir.oop.fourth.controller;
 
 import by.bsuir.oop.fourth.domain.furniture.Table;
-import by.bsuir.oop.fourth.info.Info;
+import by.bsuir.oop.fourth.util.Info;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
