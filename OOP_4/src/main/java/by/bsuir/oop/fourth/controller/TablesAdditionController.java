@@ -2,7 +2,7 @@ package by.bsuir.oop.fourth.controller;
 
 import by.bsuir.oop.fourth.domain.furniture.Table;
 import by.bsuir.oop.fourth.domain.maker.Manufacturer;
-import by.bsuir.oop.fourth.util.Info;
+import by.bsuir.oop.fourth.util.impl.Info;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -33,6 +33,7 @@ public final class TablesAdditionController {
                 .collect(Collectors.toList());
         ObservableList<String> makersList = FXCollections.observableArrayList(makers);
         makersComboBox.getItems().addAll(makersList);
+
         makersComboBox.setOnAction(e -> {
             choice = makersComboBox.getValue();
         });

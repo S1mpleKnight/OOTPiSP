@@ -1,11 +1,8 @@
 package by.bsuir.oop.fourth.serialization.impl;
 
 import by.bsuir.oop.fourth.container.Container;
-import by.bsuir.oop.fourth.decorator.EncryptionDecorator;
 import by.bsuir.oop.fourth.domain.furniture.Table;
 import by.bsuir.oop.fourth.domain.maker.Manufacturer;
-import by.bsuir.oop.fourth.encryption.impl.LFSR;
-import by.bsuir.oop.fourth.encryption.impl.SimpleCipher;
 import by.bsuir.oop.fourth.serialization.api.SerializeStrategy;
 import by.bsuir.oop.fourth.util.api.FileWorker;
 import by.bsuir.oop.fourth.util.impl.SimpleFileWorker;
@@ -16,9 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class CustomTablesSerializeStrategy implements SerializeStrategy {
+    private static final FileWorker FILE_WORKER = SimpleFileWorker.getWorker();
     private static CustomTablesSerializeStrategy customVersion;
-    //private static final FileWorker FILE_WORKER = SimpleFileWorker.getWorker();
-    private static final FileWorker FILE_WORKER = new EncryptionDecorator(SimpleFileWorker.getWorker(), new LFSR());
 
     private CustomTablesSerializeStrategy() {
     }

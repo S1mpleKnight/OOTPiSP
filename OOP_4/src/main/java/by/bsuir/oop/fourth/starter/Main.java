@@ -1,42 +1,26 @@
 package by.bsuir.oop.fourth.starter;
 
-import by.bsuir.oop.fourth.compression.api.Compression;
-import by.bsuir.oop.fourth.compression.impl.SimpleCompression;
-import by.bsuir.oop.fourth.encryption.impl.LFSR;
-import by.bsuir.oop.fourth.util.Info;
+import by.bsuir.oop.fourth.util.impl.Info;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 public class Main extends Application {
-    private static final File YAML = new File(Info.getInfo().getFILE_PATH());
     private static Stage stage;
     private static Scene mainScene;
 
     public static void main(String[] args) {
-        String slovo = "ohuet";
-        String another = new LFSR().encrypt(slovo);
-        System.out.println(another);
-        System.out.println(new LFSR().decrypt(another));
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
-        stage = primaryStage;
         try {
-            mainScene = new Scene(FXMLLoader.load(getClass().getResource("primary.fxml")));
-            stage.setScene(mainScene);
-        } catch (IOException exception) {
-            System.out.println("UUps");
+            Info.getInfo().loadPlugins();
+        } catch (IOException e) {
+            System.out.println("I/O Exception: " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println("ClassLoader e: " + e.getMessage());
         }
-        primaryStage.setTitle("Lab_4-5");
-        primaryStage.setResizable(false);
-        primaryStage.show();
+        launch(args);
     }
 
     public static void setScene(String path, Class tClass) throws IOException {
@@ -49,5 +33,19 @@ public class Main extends Application {
 
     public static Stage getStage() {
         return stage;
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        stage = primaryStage;
+        try {
+            mainScene = new Scene(FXMLLoader.load(getClass().getResource("primary.fxml")));
+            stage.setScene(mainScene);
+        } catch (IOException exception) {
+            System.out.println("Fatal error");
+        }
+        primaryStage.setTitle("Lab_4-5");
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
 }

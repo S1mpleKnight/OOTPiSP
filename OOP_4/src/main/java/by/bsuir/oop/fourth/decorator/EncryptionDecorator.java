@@ -1,7 +1,7 @@
 package by.bsuir.oop.fourth.decorator;
 
-import by.bsuir.oop.fourth.encryption.api.Cipher;
 import by.bsuir.oop.fourth.util.api.FileWorker;
+import encryption.Cipher;
 
 import java.io.File;
 import java.io.IOException;

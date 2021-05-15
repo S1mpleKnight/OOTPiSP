@@ -1,24 +1,30 @@
 package by.bsuir.oop.fourth.controller;
+
 import by.bsuir.oop.fourth.container.Container;
 import by.bsuir.oop.fourth.domain.furniture.Table;
-import by.bsuir.oop.fourth.util.Info;
 import by.bsuir.oop.fourth.serialization.api.SerializeStrategy;
 import by.bsuir.oop.fourth.serialization.impl.BinarySerializeStrategy;
 import by.bsuir.oop.fourth.serialization.impl.CustomTablesSerializeStrategy;
 import by.bsuir.oop.fourth.serialization.impl.YAMLSerializeStrategy;
+import by.bsuir.oop.fourth.starter.Main;
+import by.bsuir.oop.fourth.util.impl.Info;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import by.bsuir.oop.fourth.starter.Main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public final class PrimaryController {
     private static final Info info = Info.getInfo();
-    private static final File file = new File(info.getFILE_PATH());
+    private static final File file = new File(info.getSERIALIZE_FILE());
     private static SerializeStrategy strategy = YAMLSerializeStrategy.getYamlVersion();
     @FXML
     private RadioButton yamlButton;
@@ -35,10 +41,31 @@ public final class PrimaryController {
     @FXML
     private Button tablesButton;
     @FXML
-    private Button sofaButton;
+    private ComboBox<String> compressionCombo;
+    @FXML
+    private CheckBox compressionCheckBox;
+    @FXML
+    private ComboBox<String> encryptionCombo;
+    @FXML
+    private CheckBox encryptionCheckBox;
+
 
     @FXML
     void initialize() {
+
+
+        ObservableList<String> ciphers = FXCollections.observableArrayList(Info.getCIPHERS()
+                .stream()
+                .map(Class::getName)
+                .collect(Collectors.toList()));
+        ObservableList<String> compressions = FXCollections.observableArrayList(Info.getCompressionMethods()
+                .stream()
+                .map(Class::getName)
+                .collect(Collectors.toList()));
+        compressionCombo.getItems().addAll(compressions);
+        encryptionCombo.getItems().addAll(ciphers);
+
+
         yamlButton.setOnAction(e -> {
             strategy = YAMLSerializeStrategy.getYamlVersion();
         });

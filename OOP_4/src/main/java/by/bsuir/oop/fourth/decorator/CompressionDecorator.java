@@ -1,7 +1,7 @@
 package by.bsuir.oop.fourth.decorator;
 
-import by.bsuir.oop.fourth.compression.api.Compression;
 import by.bsuir.oop.fourth.util.api.FileWorker;
+import compression.Compression;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package by.bsuir.oop.fourth.compression.api;
+package compression;
 
 public interface Compression {
     String compression(String text);
