@@ -5,6 +5,7 @@ import by.bsuir.oop.fourth.domain.furniture.Table;
 import by.bsuir.oop.fourth.domain.maker.Manufacturer;
 import by.bsuir.oop.fourth.serialization.api.SerializeStrategy;
 import by.bsuir.oop.fourth.util.api.FileWorker;
+import by.bsuir.oop.fourth.util.impl.Info;
 import by.bsuir.oop.fourth.util.impl.SimpleFileWorker;
 
 import java.io.File;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class CustomTablesSerializeStrategy implements SerializeStrategy {
-    private static final FileWorker FILE_WORKER = SimpleFileWorker.getWorker();
+    private static final FileWorker FILE_WORKER = Info.getWorker();
     private static CustomTablesSerializeStrategy customVersion;
 
     private CustomTablesSerializeStrategy() {

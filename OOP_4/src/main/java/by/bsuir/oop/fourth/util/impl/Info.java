@@ -2,19 +2,25 @@ package by.bsuir.oop.fourth.util.impl;
 
 import by.bsuir.oop.fourth.container.Container;
 import by.bsuir.oop.fourth.domain.furniture.Table;
+import by.bsuir.oop.fourth.util.api.FileWorker;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Info {
-    public static final String CIPHERS_PATH = "D:\\Code\\Git\\Java\\OOP\\OOP_4\\encryption";
-    public static final String COMPRESSION_PATH = "D:\\Code\\Git\\Java\\OOP\\OOP_4\\compression";
+    private static FileWorker worker = SimpleFileWorker.getWorker();
+    public static final String CIPHERS_PATH = "..\\OOP_4\\encryption";
+    public static final String COMPRESSION_PATH = "..\\OOP_4\\compression";
     private static final String SERIALIZE_FILE_TXT = "serialize/file.txt";
     private static final List<Class> CIPHERS = new ArrayList<>();
     private static final List<Class> COMPRESSION_METHODS = new ArrayList<>();
     private static Info info;
     private Container<Table> tables;
+
+    public static FileWorker getWorker() {
+        return worker;
+    }
 
     private Info() {
         tables = new Container<>();

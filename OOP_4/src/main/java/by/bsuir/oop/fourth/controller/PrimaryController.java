@@ -7,7 +7,9 @@ import by.bsuir.oop.fourth.serialization.impl.BinarySerializeStrategy;
 import by.bsuir.oop.fourth.serialization.impl.CustomTablesSerializeStrategy;
 import by.bsuir.oop.fourth.serialization.impl.YAMLSerializeStrategy;
 import by.bsuir.oop.fourth.starter.Main;
+import by.bsuir.oop.fourth.util.api.FileWorker;
 import by.bsuir.oop.fourth.util.impl.Info;
+import by.bsuir.oop.fourth.util.impl.SimpleFileWorker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,6 +28,8 @@ public final class PrimaryController {
     private static final Info info = Info.getInfo();
     private static final File file = new File(info.getSERIALIZE_FILE());
     private static SerializeStrategy strategy = YAMLSerializeStrategy.getYamlVersion();
+    private static String choiceCipher;
+    private static String choiceCompression;
     @FXML
     private RadioButton yamlButton;
     @FXML
@@ -48,23 +52,37 @@ public final class PrimaryController {
     private ComboBox<String> encryptionCombo;
     @FXML
     private CheckBox encryptionCheckBox;
+    private ObservableList<String> compressions;
+    private ObservableList<String> ciphers;
 
+    public static String getChoiceCipher() {
+        return choiceCipher;
+    }
+
+    public static String getChoiceCompression() {
+        return choiceCompression;
+    }
 
     @FXML
     void initialize() {
-
-
-        ObservableList<String> ciphers = FXCollections.observableArrayList(Info.getCIPHERS()
+        ciphers = FXCollections.observableArrayList(Info.getCIPHERS()
                 .stream()
                 .map(Class::getName)
                 .collect(Collectors.toList()));
-        ObservableList<String> compressions = FXCollections.observableArrayList(Info.getCompressionMethods()
+        compressions = FXCollections.observableArrayList(Info.getCompressionMethods()
                 .stream()
                 .map(Class::getName)
                 .collect(Collectors.toList()));
         compressionCombo.getItems().addAll(compressions);
         encryptionCombo.getItems().addAll(ciphers);
 
+        encryptionCombo.setOnAction(e -> {
+            choiceCipher = encryptionCombo.getValue();
+        });
+
+        compressionCombo.setOnAction(e -> {
+            choiceCompression = compressionCombo.getValue();
+        });
 
         yamlButton.setOnAction(e -> {
             strategy = YAMLSerializeStrategy.getYamlVersion();
@@ -79,6 +97,9 @@ public final class PrimaryController {
         });
 
         deserializeButton.setOnAction(e -> {
+            if (!checkPlugins()){
+                return;
+            }
             Container<Table> oldContainer = info.getTables();
             Container<Table> container;
             try {
@@ -92,6 +113,9 @@ public final class PrimaryController {
         });
 
         serializeButton.setOnAction(e -> {
+            if (!checkPlugins()){
+                return;
+            }
             boolean result;
             try {
                 result = strategy.write(file, info.getTables());
@@ -110,6 +134,18 @@ public final class PrimaryController {
         });
     }
 
+    private boolean checkPlugins(){
+        if (encryptionCheckBox.isSelected() && choiceCipher == null){
+            showAlert("Choose cipher", false);
+            return false;
+        }
+        if (compressionCheckBox.isSelected() && choiceCompression == null){
+            showAlert("Choose compression", false);
+            return false;
+        }
+        return true;
+    }
+
     private void showTables() throws IOException {
         Main.setScene("table.fxml", PrimaryController.class);
     }
@@ -126,5 +162,12 @@ public final class PrimaryController {
         alert.setHeaderText(state ? "Information" : "Error");
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void updateWorker(){
+        FileWorker anotherWorker = SimpleFileWorker.getWorker();
+        if (compressionCheckBox.isSelected()){
+            //todo: updating worker with needed plugins params
+        }
     }
 }

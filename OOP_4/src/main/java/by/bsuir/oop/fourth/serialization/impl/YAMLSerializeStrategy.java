@@ -4,6 +4,7 @@ import by.bsuir.oop.fourth.container.Container;
 import by.bsuir.oop.fourth.domain.furniture.Table;
 import by.bsuir.oop.fourth.serialization.api.SerializeStrategy;
 import by.bsuir.oop.fourth.util.api.FileWorker;
+import by.bsuir.oop.fourth.util.impl.Info;
 import by.bsuir.oop.fourth.util.impl.SimpleFileWorker;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,7 +19,7 @@ import java.nio.charset.StandardCharsets;
 public final class YAMLSerializeStrategy implements SerializeStrategy {
     private static YAMLSerializeStrategy yamlVersion;
     private final ObjectMapper mapper;
-    private final static FileWorker FILE_WORKER = SimpleFileWorker.getWorker();
+    private final static FileWorker FILE_WORKER = Info.getWorker();
 
     private YAMLSerializeStrategy() {
         mapper = new ObjectMapper(new YAMLFactory());
