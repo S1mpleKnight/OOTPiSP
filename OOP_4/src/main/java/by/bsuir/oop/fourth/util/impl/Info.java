@@ -33,6 +33,10 @@ public class Info {
         return info;
     }
 
+    public static void setWorker(FileWorker worker) {
+        Info.worker = worker;
+    }
+
     public String getSERIALIZE_FILE() {
         return SERIALIZE_FILE_TXT;
     }

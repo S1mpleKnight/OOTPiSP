@@ -13,12 +13,12 @@ public class FileWorkerDecorator implements FileWorker {
     }
 
     @Override
-    public String readFile(File file) throws IOException {
+    public String readFile(File file) throws Exception {
         return worker.readFile(file);
     }
 
     @Override
-    public boolean writeFile(File file, String text) throws IOException {
+    public boolean writeFile(File file, String text) throws Exception {
         return worker.writeFile(file, text);
     }
 

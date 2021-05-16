@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public interface SerializeStrategy {
-    Container<Table> read(File file) throws IOException;
+    Container<Table> read(File file) throws Exception;
 
-    boolean write(File file, Container<Table> container) throws IOException;
+    boolean write(File file, Container<Table> container) throws Exception;
 }

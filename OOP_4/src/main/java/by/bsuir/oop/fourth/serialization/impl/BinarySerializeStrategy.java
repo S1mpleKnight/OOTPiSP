@@ -17,7 +17,6 @@ import java.io.ObjectOutputStream;
 
 public final class BinarySerializeStrategy implements SerializeStrategy {
     private static BinarySerializeStrategy binaryVersion;
-    private static final FileWorker FILE_WORKER = Info.getWorker();
 
     private BinarySerializeStrategy() {
     }
@@ -46,7 +45,7 @@ public final class BinarySerializeStrategy implements SerializeStrategy {
 
     @Override
     public boolean write(File file, Container<Table> container) throws IOException {
-        FILE_WORKER.createFile(file);
+        Info.getWorker().createFile(file);
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file.getAbsolutePath()))) {
             oos.writeObject(container);
         } catch (IOException exception) {

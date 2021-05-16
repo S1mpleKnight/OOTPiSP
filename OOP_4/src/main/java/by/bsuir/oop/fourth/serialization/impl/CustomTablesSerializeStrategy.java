@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class CustomTablesSerializeStrategy implements SerializeStrategy {
-    private static final FileWorker FILE_WORKER = Info.getWorker();
     private static CustomTablesSerializeStrategy customVersion;
 
     private CustomTablesSerializeStrategy() {
@@ -28,11 +27,8 @@ public final class CustomTablesSerializeStrategy implements SerializeStrategy {
     }
 
     @Override
-    public Container<Table> read(File file) throws IOException {
-        String text = FILE_WORKER.readFile(file);
-        if (!text.matches("Container \\{.*\n.*list.*\n}")) {
-            throw new IllegalArgumentException("Incorrect file content");
-        }
+    public Container<Table> read(File file) throws Exception {
+        String text = Info.getWorker().readFile(file);
         String[] lexemes = text.split("[\\[\\]]")[1].split(",");
         return getTableContainer(lexemes);
     }
@@ -50,10 +46,10 @@ public final class CustomTablesSerializeStrategy implements SerializeStrategy {
     }
 
     @Override
-    public boolean write(File file, Container<Table> container) throws IOException {
-        FILE_WORKER.createFile(file);
+    public boolean write(File file, Container<Table> container) throws Exception {
+        Info.getWorker().createFile(file);
         String text = container.toString();
-        FILE_WORKER.writeFile(file, text);
+        Info.getWorker().writeFile(file, text);
         return true;
     }
 }

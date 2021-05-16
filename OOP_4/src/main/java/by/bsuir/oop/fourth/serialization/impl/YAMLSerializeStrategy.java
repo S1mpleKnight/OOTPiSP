@@ -19,7 +19,6 @@ import java.nio.charset.StandardCharsets;
 public final class YAMLSerializeStrategy implements SerializeStrategy {
     private static YAMLSerializeStrategy yamlVersion;
     private final ObjectMapper mapper;
-    private final static FileWorker FILE_WORKER = Info.getWorker();
 
     private YAMLSerializeStrategy() {
         mapper = new ObjectMapper(new YAMLFactory());
@@ -45,7 +44,7 @@ public final class YAMLSerializeStrategy implements SerializeStrategy {
 
     @Override
     public boolean write(File file, Container<Table> container) throws IOException {
-        FILE_WORKER.createFile(file);
+        Info.getWorker().createFile(file);
         try (Writer writer = new FileWriter(file.getAbsolutePath(), StandardCharsets.UTF_8)) {
             mapper.writeValue(writer, container);
         } catch (IOException exception) {

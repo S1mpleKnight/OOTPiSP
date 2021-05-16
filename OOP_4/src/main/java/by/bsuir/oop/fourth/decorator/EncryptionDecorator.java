@@ -15,12 +15,12 @@ public final class EncryptionDecorator extends FileWorkerDecorator{
     }
 
     @Override
-    public String readFile(File file) throws IOException {
+    public String readFile(File file) throws Exception {
         return cipher.decrypt(super.readFile(file));
     }
 
     @Override
-    public boolean writeFile(File file, String text) throws IOException {
+    public boolean writeFile(File file, String text) throws Exception {
         return super.writeFile(file, cipher.encrypt(text));
     }
 }
