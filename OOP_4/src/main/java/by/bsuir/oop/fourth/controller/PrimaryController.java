@@ -103,7 +103,7 @@ public final class PrimaryController {
         });
 
         deserializeButton.setOnAction(e -> {
-            if (!checkPlugins()){
+            if (!checkPlugins()) {
                 return;
             }
             try {
@@ -129,7 +129,7 @@ public final class PrimaryController {
         });
 
         serializeButton.setOnAction(e -> {
-            if (!checkPlugins()){
+            if (!checkPlugins()) {
                 return;
             }
             try {
@@ -157,12 +157,12 @@ public final class PrimaryController {
         });
     }
 
-    private boolean checkPlugins(){
-        if (encryptionCheckBox.isSelected() && choiceCipher == null){
+    private boolean checkPlugins() {
+        if (encryptionCheckBox.isSelected() && choiceCipher == null) {
             showAlert("Choose cipher", false);
             return false;
         }
-        if (compressionCheckBox.isSelected() && choiceCompression == null){
+        if (compressionCheckBox.isSelected() && choiceCompression == null) {
             showAlert("Choose compression", false);
             return false;
         }
@@ -191,13 +191,13 @@ public final class PrimaryController {
             NoSuchMethodException, InvocationTargetException {
         FileWorker anotherWorker = SimpleFileWorker.getWorker();
         FileWorkerDecorator decorator = new FileWorkerDecorator(anotherWorker);
-        if (compressionCheckBox.isSelected()){
+        if (compressionCheckBox.isSelected()) {
             Class<? extends Compression> compressionClass
                     = Info.getCompressionMethods().get(compressions.indexOf(choiceCompression));
             decorator
                     = new CompressionDecorator(decorator, compressionClass.getDeclaredConstructor().newInstance());
         }
-        if (encryptionCheckBox.isSelected()){
+        if (encryptionCheckBox.isSelected()) {
             Class<? extends Cipher> encryptionClass = Info.getCIPHERS().get(ciphers.indexOf(choiceCipher));
             decorator = new EncryptionDecorator(decorator, encryptionClass.getDeclaredConstructor().newInstance());
         }

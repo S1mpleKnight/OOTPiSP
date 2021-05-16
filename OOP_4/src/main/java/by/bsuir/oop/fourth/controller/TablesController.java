@@ -1,6 +1,7 @@
 package by.bsuir.oop.fourth.controller;
 
 import by.bsuir.oop.fourth.domain.furniture.Table;
+import by.bsuir.oop.fourth.starter.Main;
 import by.bsuir.oop.fourth.util.impl.Info;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -16,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import by.bsuir.oop.fourth.starter.Main;
 
 import java.io.IOException;
 import java.util.ArrayList;

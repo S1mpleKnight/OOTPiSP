@@ -4,10 +4,9 @@ import by.bsuir.oop.fourth.util.api.FileWorker;
 import encryption.Cipher;
 
 import java.io.File;
-import java.io.IOException;
 
-public final class EncryptionDecorator extends FileWorkerDecorator{
-    private Cipher cipher;
+public final class EncryptionDecorator extends FileWorkerDecorator {
+    private final Cipher cipher;
 
     public EncryptionDecorator(FileWorker worker, Cipher cipher) {
         super(worker);

@@ -4,10 +4,9 @@ import by.bsuir.oop.fourth.util.api.FileWorker;
 import compression.Compression;
 
 import java.io.File;
-import java.io.IOException;
 
-public final class CompressionDecorator extends FileWorkerDecorator{
-    private Compression compression;
+public final class CompressionDecorator extends FileWorkerDecorator {
+    private final Compression compression;
 
     public CompressionDecorator(FileWorker worker, Compression compression) {
         super(worker);

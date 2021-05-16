@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class FileWorkerDecorator implements FileWorker {
-    private FileWorker worker;
+    private final FileWorker worker;
 
     public FileWorkerDecorator(FileWorker worker) {
         this.worker = worker;

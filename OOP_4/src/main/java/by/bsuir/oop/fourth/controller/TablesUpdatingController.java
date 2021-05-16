@@ -43,7 +43,7 @@ public final class TablesUpdatingController {
         makersComboBox.setValue(makersList.get(table.getMaker().ordinal()));
 
         updatingButton.setOnAction(e -> {
-            if (checkLegsField() && checkAreaField()){
+            if (checkLegsField() && checkAreaField()) {
                 table.setArea(Integer.parseInt(areaField.getText()));
                 table.setNumberOfLegs(Integer.parseInt(legsField.getText()));
                 table.setMaker(Manufacturer.valueOf(choice));
@@ -54,16 +54,16 @@ public final class TablesUpdatingController {
         });
     }
 
-    private boolean checkLegsField(){
-        if (legsField.getText().equals("")){
+    private boolean checkLegsField() {
+        if (legsField.getText().equals("")) {
             return false;
         } else if (legsField.getText().length() >= 10) {
             return false;
         } else return legsField.getText().matches("[0-9]+");
     }
 
-    private boolean checkAreaField(){
-        if (areaField.getText().equals("")){
+    private boolean checkAreaField() {
+        if (areaField.getText().equals("")) {
             return false;
         } else if (areaField.getText().length() >= 10) {
             return false;

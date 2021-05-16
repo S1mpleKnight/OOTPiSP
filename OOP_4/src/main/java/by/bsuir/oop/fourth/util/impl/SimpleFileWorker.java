@@ -19,7 +19,7 @@ public final class SimpleFileWorker implements FileWorker {
     }
 
     public static SimpleFileWorker getWorker() {
-        if (worker == null){
+        if (worker == null) {
             worker = new SimpleFileWorker();
         }
         return worker;

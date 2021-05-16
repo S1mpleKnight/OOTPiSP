@@ -54,10 +54,10 @@ public final class TablesAdditionController {
 
     private void reset() {
         areaField.setText("");
-       legsField.setText("");
+        legsField.setText("");
     }
 
-    private boolean checkMakerField(){
+    private boolean checkMakerField() {
         return choice != null;
     }
 

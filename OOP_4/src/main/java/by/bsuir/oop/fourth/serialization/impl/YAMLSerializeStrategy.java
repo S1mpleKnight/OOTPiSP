@@ -3,9 +3,7 @@ package by.bsuir.oop.fourth.serialization.impl;
 import by.bsuir.oop.fourth.container.Container;
 import by.bsuir.oop.fourth.domain.furniture.Table;
 import by.bsuir.oop.fourth.serialization.api.SerializeStrategy;
-import by.bsuir.oop.fourth.util.api.FileWorker;
 import by.bsuir.oop.fourth.util.impl.Info;
-import by.bsuir.oop.fourth.util.impl.SimpleFileWorker;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -35,7 +33,8 @@ public final class YAMLSerializeStrategy implements SerializeStrategy {
     public Container<Table> read(File file) {
         Container<Table> container = null;
         try {
-            container = mapper.readValue(file, new TypeReference<Container<Table>>(){});
+            container = mapper.readValue(file, new TypeReference<Container<Table>>() {
+            });
         } catch (IOException exception) {
             System.out.println("I/O exception");
         }

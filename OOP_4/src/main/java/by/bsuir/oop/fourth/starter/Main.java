@@ -20,11 +20,6 @@ public class Main extends Application {
         } catch (ClassNotFoundException e) {
             System.out.println("ClassLoader e: " + e.getMessage());
         }
-//        FileWorker fileWorker = new EncryptionDecorator(SimpleFileWorker.getWorker(), new LFSR());
-//        Info.setWorker(fileWorker);
-//        SerializeStrategy strategy = CustomTablesSerializeStrategy.getCustomVersion();
-//        Container<Table> tableContainer = strategy.read(new File("serialize/file.txt"));
-//        System.out.println(tableContainer.toString());
         launch(args);
     }
 
